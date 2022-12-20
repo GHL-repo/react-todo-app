@@ -3,11 +3,12 @@ import styles from './TaskItem.module.css';
 
 import { CheckIcon, PencilSquareIcon, TrashIcon } from '@heroicons/react/24/solid';
 
-const TaskItem = ({task, removeTask}) => {
+const TaskItem = ({task, removeTask, toggleTask}) => {
     const [isChecked, setIsChecked] = useState(task.checked);
 
     const handleCheckboxChange = (e) => {
         setIsChecked(!isChecked);
+        toggleTask(task.id);
     }
 
     return (
@@ -34,7 +35,7 @@ const TaskItem = ({task, removeTask}) => {
             <div className={styles["task-group"]}>
                 <button className='btn' 
                         aria-label={`Update ${task.name} Task`}
-                        // onClick={}
+                        onClick={() => toggleTask(task.id)}
                 >
                     <PencilSquareIcon width={24} height={24} />
                 </button>

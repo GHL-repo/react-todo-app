@@ -15,13 +15,23 @@ function App() {
     setTasks(prevState => prevState.filter(t => t.id !== id));
   }
 
+  const toggleTask= (id) => {
+    setTasks(prevState => prevState.map(t => (t.id === id ? { ...t, checked: !t.checked } : t )))
+  }
+
   return (
     <div className="container">
       <header>
         <h1>Task Manager 2023</h1>
       </header>
       <CustomForm addTask={addTask} />
-      {tasks && <TaskList tasks={tasks} removeTask={removeTask} />}
+      {tasks && ( 
+        <TaskList 
+          tasks={tasks} 
+          removeTask={removeTask} 
+          toggleTask={toggleTask} 
+          />
+        )}
     </div>
   )
 }

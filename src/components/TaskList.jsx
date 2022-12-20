@@ -2,7 +2,7 @@ import TaskItem from './TaskItem';
 
 import styles from './TaskList.module.css';
 
-const TaskList = ({tasks, removeTask}) => {
+const TaskList = ({tasks, removeTask, toggleTask}) => {
   return (
     <ul className={styles.tasks}>
         {tasks.sort((a, b) => b.id - a.id).map(task => (
@@ -10,6 +10,7 @@ const TaskList = ({tasks, removeTask}) => {
                 key={task.id}
                 task={task}
                 removeTask={removeTask}
+                toggleTask={toggleTask}
             />
         ))
         }
