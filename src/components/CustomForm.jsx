@@ -7,7 +7,11 @@ const CustomForm = ({ addTask }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    addTask(e);
+    addTask({
+      name: task,
+      checked: false,
+      id: Date.now()
+    });
     setTask("");
   }
 
