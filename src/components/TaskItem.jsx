@@ -3,7 +3,7 @@ import styles from './TaskItem.module.css';
 
 import { CheckIcon, PencilSquareIcon, TrashIcon } from '@heroicons/react/24/solid';
 
-const TaskItem = ({task}) => {
+const TaskItem = ({task, removeTask}) => {
     const [isChecked, setIsChecked] = useState(task.checked);
 
     const handleCheckboxChange = (e) => {
@@ -40,7 +40,7 @@ const TaskItem = ({task}) => {
                 </button>
                 <button className={`btn ${styles.delete}`}
                         aria-label={`Delete ${task.name} Task`}
-                        // onClick={}
+                        onClick={() => removeTask(task.id)}
                 >
                     <TrashIcon width={24} height={24} />
                 </button>
